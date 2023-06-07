@@ -4,7 +4,7 @@
 The Block Campaign Manager Plugin is a Moodle plugin designed to manage advertisements within your Moodle site. This plugin allows you to easily embed images and links, specifying campaign start and end dates.
 
 ## Installation
-1. Download the plugin package from the official Moodle Plugin Directory or from the provided link in the [plugin discussion thread](https://moodle.org/mod/forum/discuss.php?d=264986).
+1. Download the plugin package from the official Moodle Plugin Directory [block_campaign_manager](https://moodle.org/plugins/block_campaign_manager).
 2. Extract the contents of the package.
 3. Copy the extracted `block_campaign_manager` folder into the `blocks` directory of your Moodle installation: `/path/to/your/moodle/blocks/`.
 4. Log in to your Moodle site as an administrator.
