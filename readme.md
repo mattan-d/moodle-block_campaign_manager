@@ -44,6 +44,7 @@ Contributions to the Block Campaign Manager Plugin are welcome! If you would lik
 ## Support
 If you encounter any issues or have questions about the Block Campaign Manager Plugin, you can seek support from CentricApp. Here are some resources:
 - [support@centricapp.co](https://centricapp.co)
+- [Moodle plugins directory](https://moodle.org/plugins/block_campaign_manager)
 
 ## License
 The Block Campaign Manager Plugin is released under the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.html) version 3 or later. Please see the `LICENSE` file included in the plugin package for more details.
