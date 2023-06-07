@@ -1,0 +1,11 @@
+.block_campaign_manager .campaigns {
+    display: flex;
+}
+
+.block_campaign_manager .campaigns .campaign-item {
+    margin: 0 15px;
+}
+
+.block_campaign_manager .campaigns .campaign-item .campaign-image {
+    width: 100%;
+}
