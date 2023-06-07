@@ -57,12 +57,12 @@ class campaign_edit_form extends moodleform
             array('maxbytes' => 262144, 'accepted_types' => array('.jpg', '.png', 'jpeg')));
         $mform->addRule('image', null, 'required');
 
-        $mform->addElement('date_time_selector', 'startdate', get_string('startdate', 'block_campaign_manager'), array('optional' => true));
+        $mform->addElement('date_time_selector', 'startdate', get_string('startdate', 'block_campaign_manager'));
         $mform->addHelpButton('startdate', 'startdate');
         $mform->addRule('startdate', null, 'required');
         $mform->setAdvanced('startdate');
 
-        $mform->addElement('date_time_selector', 'enddate', get_string('enddate', 'block_campaign_manager'), array('optional' => true));
+        $mform->addElement('date_time_selector', 'enddate', get_string('enddate', 'block_campaign_manager'));
         $mform->addHelpButton('enddate', 'enddate');
         $mform->addRule('enddate', null, 'required');
         $mform->setAdvanced('enddate');
