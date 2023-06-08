@@ -28,21 +28,26 @@
  * @copyright 2023 CentricApp <support@centricapp.co>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_campaign_manager extends block_base {
-    public function init() {
+class block_campaign_manager extends block_base
+{
+    public function init()
+    {
         $this->title = get_string('pluginname', 'block_campaign_manager');
     }
 
-    public function applicable_formats() {
+    public function applicable_formats()
+    {
         return array('all' => true);
     }
 
-    public function specialization() {
+    public function specialization()
+    {
         // No customized block title
         $this->title = get_string('campaigncampaign', 'block_campaign_manager');
     }
 
-    public function get_content() {
+    public function get_content()
+    {
         global $CFG, $DB;
 
         if ($this->content !== null) {
@@ -60,7 +65,7 @@ class block_campaign_manager extends block_base {
         $this->content->text .= '<div class="campaigns">';
 
         // Display the list of campaigns.
-        $campaigns = $DB->get_records('block_campaign_manager');
+        $campaigns = $DB->get_records('block_campaign_manager', array('visible' => 1));
         $max = 0;
         foreach ($campaigns as $campaign) {
 
@@ -104,15 +109,18 @@ class block_campaign_manager extends block_base {
         return $this->content;
     }
 
-    public function instance_allow_multiple() {
+    public function instance_allow_multiple()
+    {
         return true;
     }
 
-    public function has_config() {
+    public function has_config()
+    {
         return true;
     }
 
-    public function instance_allow_config() {
+    public function instance_allow_config()
+    {
         return true;
     }
 }

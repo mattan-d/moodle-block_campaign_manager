@@ -60,7 +60,7 @@ if ($statuscampaignid && confirm_sesskey()) {
 }
 
 // Display the list of campaigns.
-$campaigns = $DB->get_records('block_campaign_manager');
+$campaigns = $DB->get_records('block_campaign_manager', array(), 'startdate');
 
 $strmanage = get_string('managecampaigns', 'block_campaign_manager');
 
@@ -76,14 +76,16 @@ echo $OUTPUT->header();
 
 $table = new flexible_table('display-campaigns');
 
-$table->define_columns(array('campaign', 'actions'));
-$table->define_headers(array(get_string('campaign', 'block_campaign_manager'), get_string('actions', 'moodle')));
+$table->define_columns(array('campaign', 'startdate', 'actions'));
+$table->define_headers(array(get_string('campaign', 'block_campaign_manager'), get_string('startdate', 'block_campaign_manager'),
+    get_string('enddate', 'block_campaign_manager'), get_string('actions', 'moodle')));
 $table->define_baseurl($baseurl);
 
 $table->set_attribute('cellspacing', '0');
 $table->set_attribute('id', 'campaigns');
 $table->set_attribute('class', 'generaltable generalbox');
 $table->column_class('campaign', 'campaign');
+$table->column_class('startdate', 'startdate');
 $table->column_class('actions', 'actions');
 
 $table->setup();
@@ -112,8 +114,10 @@ foreach ($campaigns as $campaign) {
     }
 
     $campaignicons = $editaction . ' ' . $deleteaction . ' ' . $statusaction;
+    $campaign->startdate = date('d/m/Y H:i:s', $campaign->startdate);
+    $campaign->enddate = date('d/m/Y H:i:s', $campaign->enddate);
 
-    $table->add_data(array($campaigninfo, $campaignicons));
+    $table->add_data(array($campaigninfo, $campaign->startdate, $campaign->enddate, $campaignicons));
 }
 
 $table->print_html();
