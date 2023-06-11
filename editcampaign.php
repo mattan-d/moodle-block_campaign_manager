@@ -53,8 +53,9 @@ class campaign_edit_form extends moodleform
         $mform->addElement('text', 'url', get_string('campaignurl', 'block_campaign_manager'), array('size' => 60));
         $mform->setType('url', PARAM_URL);
 
-        $mform->addElement('filepicker', 'image', get_string('campaignimage', 'block_campaign_manager'), null,
-            array('maxbytes' => 262144, 'accepted_types' => array('.jpg', '.png', 'jpeg')));
+        $mform->addElement('filemanager', 'image', get_string('campaignimage', 'block_campaign_manager'), null,
+            array('accepted_types' => array('.jpg', '.png', 'jpeg')));
+
         $mform->addRule('image', null, 'required');
 
         $mform->addElement('date_time_selector', 'startdate', get_string('startdate', 'block_campaign_manager'));
