@@ -67,6 +67,11 @@ class block_campaign_manager extends block_base
         // Display the list of campaigns.
         $campaigns = $DB->get_records('block_campaign_manager', array('visible' => 1));
         $max = 0;
+
+        if (!empty($this->config->shownumentries)) {
+            $CFG->block_campaign_manager_num_entries = $this->config->shownumentries;
+        }
+
         foreach ($campaigns as $campaign) {
 
             if ($max == $CFG->block_campaign_manager_num_entries) {
