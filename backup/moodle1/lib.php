@@ -32,7 +32,8 @@ class moodle1_block_campaign_manager_handler extends moodle1_block_handler {
         $contextid = $this->converter->get_contextid(CONTEXT_BLOCK, $data['id']);
 
         $this->open_xml_writer("course/blocks/{$data['name']}_{$instanceid}/campaign_manager.xml");
-        $this->xmlwriter->begin_tag('block', array('id' => $instanceid, 'contextid' => $contextid, 'blockname' => 'campaign_manager'));
+        $this->xmlwriter->begin_tag('block',
+                array('id' => $instanceid, 'contextid' => $contextid, 'blockname' => 'campaign_manager'));
         $this->xmlwriter->begin_tag('campaign_manager', array('id' => $instanceid));
         $this->xmlwriter->full_tag('campaigns', '');
         $this->xmlwriter->end_tag('campaign_manager');

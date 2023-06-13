@@ -24,8 +24,6 @@
 
 namespace block_campaign_manager\privacy;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Privacy Subsystem for block_campaign_manager implementing null_provider.
  *

@@ -28,11 +28,9 @@
 /**
  * Define the complete forum structure for backup, with file and id annotations
  */
-class backup_campaign_manager_block_structure_step extends backup_block_structure_step
-{
+class backup_campaign_manager_block_structure_step extends backup_block_structure_step {
 
-    protected function define_structure()
-    {
+    protected function define_structure() {
         global $DB;
 
         $block = $DB->get_record('block_instances', array('id' => $this->task->get_blockid()));
@@ -48,26 +46,21 @@ class backup_campaign_manager_block_structure_step extends backup_block_structur
             }
         }
 
-        // Define each element separated
-
+        // Define each element separated.
         $campaignmanager = new backup_nested_element('campaign_manager', array('id'), null);
-
         $campaigns = new backup_nested_element('campaigns');
-
         $campaign = new backup_nested_element('campaign', array('id'), array(
-            'title', 'image', 'description', 'url', 'visible',
-            'startdate', 'enddate'));
+                'title', 'image', 'description', 'url', 'visible',
+                'startdate', 'enddate'));
 
-        // Build the tree
-
+        // Build the tree.
         $campaignmanager->add_child($campaigns);
         $campaigns->add_child($campaign);
 
-        // Define sources
+        // Define sources.
+        $campaignmanager->set_source_array(array((object) array('id' => $this->task->get_blockid())));
 
-        $campaignmanager->set_source_array(array((object)array('id' => $this->task->get_blockid())));
-
-        // Only if there are campaigns
+        // Only if there are campaigns.
         if (!empty($config->campaignid)) {
             $campaign->set_source_sql("
                 SELECT *
@@ -76,8 +69,7 @@ class backup_campaign_manager_block_structure_step extends backup_block_structur
         }
 
         // Annotations (none)
-
-        // Return the root element (campaign_manager), wrapped into standard block structure
+        // Return the root element (campaign_manager), wrapped into standard block structure.
         return $this->prepare_block_structure($campaignmanager);
     }
 }

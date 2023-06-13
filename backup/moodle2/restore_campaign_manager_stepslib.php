@@ -44,8 +44,8 @@ class restore_campaign_manager_block_structure_step extends restore_structure_st
     public function process_block($data) {
         global $DB;
 
-        $data = (object)$data;
-        $campaignsarr = array(); // To accumulate campaigns
+        $data = (object) $data;
+        $campaignsarr = array(); // To accumulate campaigns.
 
         if (!$this->task->get_blockid()) {
             return;

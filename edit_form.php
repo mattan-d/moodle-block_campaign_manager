@@ -29,16 +29,15 @@
  * @copyright 2023 CentricApp <support@centricapp.co>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_campaign_manager_edit_form extends block_edit_form
-{
-    protected function specific_definition($mform)
-    {
+class block_campaign_manager_edit_form extends block_edit_form {
+    protected function specific_definition($mform) {
         global $CFG, $DB, $USER;
 
         // Fields for editing block contents.
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
 
-        $mform->addElement('text', 'config_shownumentries', get_string('shownumentrieslabel', 'block_campaign_manager'), array('size' => 5));
+        $mform->addElement('text', 'config_shownumentries', get_string('shownumentrieslabel', 'block_campaign_manager'),
+                array('size' => 5));
         $mform->setType('config_shownumentries', PARAM_INT);
         $mform->addRule('config_shownumentries', null, 'numeric', null, 'client');
 
@@ -49,8 +48,7 @@ class block_campaign_manager_edit_form extends block_edit_form
         }
     }
 
-    function set_data($defaults)
-    {
+    public function set_data($defaults) {
         $defaults->config_shownumentries = $this->block->config->config_shownumentries;
         parent::set_data($defaults);
     }

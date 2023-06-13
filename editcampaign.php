@@ -25,20 +25,17 @@
 require_once(__DIR__ . '/../../config.php');
 require_once($CFG->libdir . '/formslib.php');
 
-class campaign_edit_form extends moodleform
-{
+class campaign_edit_form extends moodleform {
     protected $isadding;
     protected $title = '';
     protected $description = '';
 
-    public function __construct($actionurl, $isadding)
-    {
+    public function __construct($actionurl, $isadding) {
         $this->isadding = $isadding;
         parent::__construct($actionurl);
     }
 
-    public function definition()
-    {
+    public function definition() {
         $mform =& $this->_form;
 
         // Then show the fields about where this block appears.
@@ -48,13 +45,14 @@ class campaign_edit_form extends moodleform
         $mform->setType('title', PARAM_TEXT);
         $mform->addRule('title', null, 'required');
 
-        $mform->addElement('textarea', 'description', get_string('displaydescriptionlabel', 'block_campaign_manager'), 'wrap="virtual" rows="10" cols="50"');
+        $mform->addElement('textarea', 'description', get_string('displaydescriptionlabel', 'block_campaign_manager'),
+                'wrap="virtual" rows="10" cols="50"');
 
         $mform->addElement('text', 'url', get_string('campaignurl', 'block_campaign_manager'), array('size' => 60));
         $mform->setType('url', PARAM_URL);
 
         $mform->addElement('filemanager', 'image', get_string('campaignimage', 'block_campaign_manager'), null,
-            array('accepted_types' => array('.jpg', '.png', 'jpeg')));
+                array('accepted_types' => array('.jpg', '.png', 'jpeg')));
 
         $mform->addRule('image', null, 'required');
 
@@ -68,16 +66,10 @@ class campaign_edit_form extends moodleform
         $mform->addRule('enddate', null, 'required');
         $mform->setAdvanced('enddate');
 
-        $submitlabal = null; // Default
-        if ($this->isadding) {
-            $submitlabal = get_string('addnewcampaign', 'block_campaign_manager');
-        }
-
-        $this->add_action_buttons(true, $submitlabal);
+        $this->add_action_buttons(true, get_string('continue'));
     }
 
-    public function validation($data, $files)
-    {
+    public function validation($data, $files) {
         $errors = parent::validation($data, $files);
 
         if ($data['enddate'] && $data['startdate'] && $data['startdate'] >= $data['enddate']) {
@@ -87,12 +79,13 @@ class campaign_edit_form extends moodleform
         return $errors;
     }
 
-    public function get_data()
-    {
+    public function get_data() {
         $data = parent::get_data();
         return $data;
     }
 }
+
+require_login();
 
 $returnurl = optional_param('returnurl', '', PARAM_LOCALURL);
 $campaignid = optional_param('campaignid', 0, PARAM_INT); // 0 mean create new.
@@ -132,7 +125,7 @@ if ($mform->is_cancelled()) {
     // Initialise file picker for image.
     $draftitemid = file_get_submitted_draft_itemid('image');
     file_save_draft_area_files($draftitemid, $context->id, 'block_campaign_manager', 'content', $data->id,
-        array('subdirs' => true));
+            array('subdirs' => true));
     $data->image = $draftitemid;
 
     $DB->update_record('block_campaign_manager', $data);

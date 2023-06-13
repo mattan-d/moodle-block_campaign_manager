@@ -23,7 +23,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot . '/blocks/campaign_manager/backup/moodle2/restore_campaign_manager_stepslib.php'); // We have structure steps
+require_once($CFG->dirroot .
+        '/blocks/campaign_manager/backup/moodle2/restore_campaign_manager_stepslib.php'); // We have structure steps.
 
 /**
  * Specialised restore task for the campaign_manager block
@@ -37,16 +38,16 @@ class restore_campaign_manager_block_task extends restore_block_task {
     }
 
     protected function define_my_steps() {
-        // campaign_manager has one structure step
+        // Campaign_manager has one structure step.
         $this->add_step(new restore_campaign_manager_block_structure_step('campaign_manager_structure', 'campaign_manager.xml'));
     }
 
     public function get_fileareas() {
-        return array(); // No associated fileareas
+        return array(); // No associated fileareas.
     }
 
     public function get_configdata_encoded_attributes() {
-        return array(); // No special handling of configdata
+        return array(); // No special handling of configdata.
     }
 
     public static function define_decode_contents() {

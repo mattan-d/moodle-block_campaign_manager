@@ -25,9 +25,11 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
-    $settings->add(new admin_setting_configtext('block_campaign_manager_num_entries', get_string('numentries', 'block_campaign_manager'),
-        get_string('clientnumentries', 'block_campaign_manager'), 5, PARAM_INT));
+    $settings->add(new admin_setting_configtext('block_campaign_manager_num_entries',
+            get_string('numentries', 'block_campaign_manager'),
+            get_string('clientnumentries', 'block_campaign_manager'), 5, PARAM_INT));
 
-    $link = '<a href="' . $CFG->wwwroot . '/blocks/campaign_manager/managecampaigns.php">' . get_string('campaignsaddedit', 'block_campaign_manager') . '</a>';
+    $link = '<a href="' . $CFG->wwwroot . '/blocks/campaign_manager/managecampaigns.php">' .
+            get_string('campaignsaddedit', 'block_campaign_manager') . '</a>';
     $settings->add(new admin_setting_heading('block_addheading', '', $link));
 }

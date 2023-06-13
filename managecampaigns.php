@@ -45,14 +45,14 @@ if ($returnurl) {
 $baseurl = new moodle_url('/blocks/campaign_manager/managecampaigns.php', $urlparams);
 $PAGE->set_url($baseurl);
 
-// Process any actions
+// Process any actions.
 if ($deletecampaignid && confirm_sesskey()) {
     $DB->delete_records('block_campaign_manager', array('id' => $deletecampaignid));
 
     redirect($PAGE->url, get_string('campaigndeleted', 'block_campaign_manager'));
 }
 
-// Process any actions
+// Process any actions.
 if ($statuscampaignid && confirm_sesskey()) {
     $DB->set_field('block_campaign_manager', 'visible', $newstatus, ['id' => $statuscampaignid]);
 
@@ -78,7 +78,7 @@ $table = new flexible_table('display-campaigns');
 
 $table->define_columns(array('campaign', 'startdate', 'actions'));
 $table->define_headers(array(get_string('campaign', 'block_campaign_manager'), get_string('startdate', 'block_campaign_manager'),
-    get_string('enddate', 'block_campaign_manager'), get_string('actions', 'moodle')));
+        get_string('enddate', 'block_campaign_manager'), get_string('actions', 'moodle')));
 $table->define_baseurl($baseurl);
 
 $table->set_attribute('cellspacing', '0');
@@ -91,24 +91,29 @@ $table->column_class('actions', 'actions');
 $table->setup();
 
 foreach ($campaigns as $campaign) {
-    $viewlink = html_writer::link($CFG->wwwroot . '/blocks/campaign_manager/editcampaign.php?campaignid=' . $campaign->id . $extraparams, $campaign->title);
+    $viewlink = html_writer::link($CFG->wwwroot . '/blocks/campaign_manager/editcampaign.php?campaignid=' . $campaign->id .
+            $extraparams, $campaign->title);
 
     $campaigninfo = '<div class="title">' . $viewlink . '</div>' .
-        '<div class="description">' . $campaign->description . '</div>';
+            '<div class="description">' . $campaign->description . '</div>';
 
     $editurl = new moodle_url('/blocks/campaign_manager/editcampaign.php?campaignid=' . $campaign->id . $extraparams);
     $editaction = $OUTPUT->action_icon($editurl, new pix_icon('t/edit', get_string('edit')));
 
-    $deleteurl = new moodle_url('/blocks/campaign_manager/managecampaigns.php?deletecampaignid=' . $campaign->id . '&sesskey=' . sesskey() . $extraparams);
+    $deleteurl = new moodle_url('/blocks/campaign_manager/managecampaigns.php?deletecampaignid=' . $campaign->id . '&sesskey=' .
+            sesskey() . $extraparams);
     $deleteicon = new pix_icon('t/delete', get_string('delete'));
-    $deleteaction = $OUTPUT->action_icon($deleteurl, $deleteicon, new confirm_action(get_string('deletecampaignconfirm', 'block_campaign_manager')));
+    $deleteaction = $OUTPUT->action_icon($deleteurl, $deleteicon,
+            new confirm_action(get_string('deletecampaignconfirm', 'block_campaign_manager')));
 
     if ($campaign->visible) {
-        $statusurl = new moodle_url('/blocks/campaign_manager/managecampaigns.php?newstatus=0&statuscampaignid=' . $campaign->id . '&sesskey=' . sesskey() . $extraparams);
+        $statusurl = new moodle_url('/blocks/campaign_manager/managecampaigns.php?newstatus=0&statuscampaignid=' . $campaign->id .
+                '&sesskey=' . sesskey() . $extraparams);
         $statusicon = new pix_icon('t/hide', get_string('hide'));
         $statusaction = $OUTPUT->action_icon($statusurl, $statusicon);
     } else {
-        $statusurl = new moodle_url('/blocks/campaign_manager/managecampaigns.php?newstatus=1&statuscampaignid=' . $campaign->id . '&sesskey=' . sesskey() . $extraparams);
+        $statusurl = new moodle_url('/blocks/campaign_manager/managecampaigns.php?newstatus=1&statuscampaignid=' . $campaign->id .
+                '&sesskey=' . sesskey() . $extraparams);
         $statusicon = new pix_icon('t/show', get_string('show'));
         $statusaction = $OUTPUT->action_icon($statusurl, $statusicon);
     }
@@ -123,7 +128,8 @@ foreach ($campaigns as $campaign) {
 $table->print_html();
 
 $url = $CFG->wwwroot . '/blocks/campaign_manager/editcampaign.php?' . substr($extraparams, 1);
-echo '<div class="actionbuttons mt-3">' . $OUTPUT->single_button($url, get_string('addnewcampaign', 'block_campaign_manager'), 'get') . '</div>';
+echo '<div class="actionbuttons mt-3">' .
+        $OUTPUT->single_button($url, get_string('addnewcampaign', 'block_campaign_manager'), 'get') . '</div>';
 
 if ($returnurl) {
     echo '<div class="backlink">' . html_writer::link($returnurl, get_string('back')) . '</div>';

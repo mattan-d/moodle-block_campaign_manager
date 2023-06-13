@@ -16,6 +16,7 @@
 
 /**
  * Contains block_campaign_manager
+ *
  * @package   block_campaign_manager
  * @copyright 2023 CentricApp <support@centricapp.co>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -28,26 +29,21 @@
  * @copyright 2023 CentricApp <support@centricapp.co>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_campaign_manager extends block_base
-{
-    public function init()
-    {
+class block_campaign_manager extends block_base {
+    public function init() {
         $this->title = get_string('pluginname', 'block_campaign_manager');
     }
 
-    public function applicable_formats()
-    {
+    public function applicable_formats() {
         return array('all' => true);
     }
 
-    public function specialization()
-    {
-        // No customized block title
+    public function specialization() {
+        // No customized block title.
         $this->title = get_string('campaigncampaign', 'block_campaign_manager');
     }
 
-    public function get_content()
-    {
+    public function get_content() {
         global $CFG, $DB;
 
         if ($this->content !== null) {
@@ -56,7 +52,7 @@ class block_campaign_manager extends block_base
 
         $this->context = context_system::instance();
 
-        // initalise block content object
+        // Initalise block content object.
         $this->content = new stdClass;
         $this->content->text = '';
         $this->content->footer = '';
@@ -95,11 +91,14 @@ class block_campaign_manager extends block_base
                         continue;
                     }
 
-                    $url = moodle_url::make_pluginfile_url($this->context->id, 'block_campaign_manager', 'content', $campaign->id, '/', $file->get_filename());
+                    $url = moodle_url::make_pluginfile_url($this->context->id, 'block_campaign_manager', 'content', $campaign->id,
+                            '/', $file->get_filename());
                     if ($campaign->url) {
-                        $this->content->text .= '<div class="campaign-item"><a href="' . $campaign->url . '"><img src="' . $url->out() . '" class="campaign-image"></a></div>';
+                        $this->content->text .= '<div class="campaign-item"><a href="' . $campaign->url . '"><img src="' .
+                                $url->out() . '" class="campaign-image"></a></div>';
                     } else {
-                        $this->content->text .= '<div class="campaign-item"><img src="' . $url->out() . '" class="campaign-image"></div>';
+                        $this->content->text .= '<div class="campaign-item"><img src="' . $url->out() .
+                                '" class="campaign-image"></div>';
                     }
                 }
             }
@@ -114,18 +113,15 @@ class block_campaign_manager extends block_base
         return $this->content;
     }
 
-    public function instance_allow_multiple()
-    {
+    public function instance_allow_multiple() {
         return true;
     }
 
-    public function has_config()
-    {
+    public function has_config() {
         return true;
     }
 
-    public function instance_allow_config()
-    {
+    public function instance_allow_config() {
         return true;
     }
 }
