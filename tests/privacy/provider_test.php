@@ -53,16 +53,14 @@ class provider_test extends \core_privacy\tests\provider_testcase {
         $this->add_campaign($user);
 
         // Check that we have an entry.
-        $campaign = $DB->get_records('block_campaign_manager', ['userid' => $user->id]);
-        $this->assertCount(1, $campaign);
+        $campaigns = $DB->get_records('block_campaign_manager', ['userid' => $user->id]);
+        $this->assertCount(1, $campaigns);
 
         // Add additional assertions to verify the expected behavior.
         // Assert that the campaign entry matches the user ID.
-        $this->assertEquals($user->id, $campaign[0]->userid);
-
-        // Assert any other necessary conditions or expectations.
-        // Add an assertion to indicate that the test has covered this code block.
-        $this->assertCoverage('add_user_data');
+        foreach ($campaigns as $campaign) {
+            $this->assertEquals($user->id, $campaign->userid);
+        }
 
         // Add assertions to verify the expected behavior.
         $this->assertTrue(true);
@@ -80,6 +78,10 @@ class provider_test extends \core_privacy\tests\provider_testcase {
                 'userid' => $user->id,
                 'title' => 'Some Campagin',
                 'description' => 'Description here',
+                'image' => 1,
+                'startdate' => time(),
+                'enddate' => time(),
+                'visible' => 1,
                 'url' => 'https://moodle.com',
         );
 
