@@ -50,65 +50,19 @@ class block_campaign_manager extends block_base {
             return $this->content;
         }
 
-        $this->context = context_system::instance();
-
         // Initalise block content object.
         $this->content = new stdClass;
         $this->content->text = '';
         $this->content->footer = '';
-        $fs = get_file_storage();
-
-        $this->content->text .= '<div class="campaigns">';
-
-        // Display the list of campaigns.
-        $campaigns = $DB->get_records('block_campaign_manager', array('visible' => 1));
-        $max = 0;
-
-        if (!empty($this->config->shownumentries)) {
-            $CFG->block_campaign_manager_num_entries = $this->config->shownumentries;
-        }
-
-        foreach ($campaigns as $campaign) {
-
-            if ($max == $CFG->block_campaign_manager_num_entries) {
-                continue;
-            }
-
-            if ($campaign->startdate && $campaign->startdate > time()) {
-                continue;
-            }
-
-            if ($campaign->enddate && $campaign->enddate < time()) {
-                continue;
-            }
-
-            $max++;
-            $draftfiles = $fs->get_area_files($this->context->id, 'block_campaign_manager', 'content', $campaign->id);
-
-            if ($draftfiles) {
-                foreach ($draftfiles as $file) {
-                    if ($file->is_directory()) {
-                        continue;
-                    }
-
-                    $url = moodle_url::make_pluginfile_url($this->context->id, 'block_campaign_manager', 'content', $campaign->id,
-                            '/', $file->get_filename());
-                    if ($campaign->url) {
-                        $this->content->text .= '<div class="campaign-item"><a href="' . $campaign->url . '"><img src="' .
-                                $url->out() . '" class="campaign-image"></a></div>';
-                    } else {
-                        $this->content->text .= '<div class="campaign-item"><img src="' . $url->out() .
-                                '" class="campaign-image"></div>';
-                    }
-                }
-            }
-        }
-
-        $this->content->text .= '</div>';
 
         if (empty($this->instance)) {
+            $this->content = '';
             return $this->content;
         }
+
+        $renderable = new \block_campaign_manager\output\campaign($this->config);
+        $renderer = $this->page->get_renderer('block_campaign_manager');
+        $this->content->text = $renderer->render($renderable);
 
         return $this->content;
     }

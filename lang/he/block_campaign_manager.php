@@ -23,6 +23,7 @@
  */
 
 $string['addnew'] = 'הוספת חדש';
+$string['settings'] = 'הגדרות';
 $string['addnewcampaign'] = 'הוספת קמפיין חדש';
 $string['clientnumentries'] = 'כמות הקמפיינים המירבית שיופיעו ברכיב.';
 $string['urlnotvalid'] = 'קישור אינו תקין';
@@ -46,3 +47,4 @@ $string['pluginname'] = 'מנהל קמפיינים';
 $string['invalidstartdate'] = 'תאריך התחלת קמפיין אינו תקין';
 $string['campaign_manager:addinstance'] = 'הוספת משבצת ניהול קמפיינים';
 $string['campaign_manager:myaddinstance'] = 'הוספת קמפיין חדש';
+$string['campaign_manager:manageanycampaigns'] = 'ניהול קמפיינים';

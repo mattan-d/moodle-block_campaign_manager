@@ -25,73 +25,18 @@
 require_once(__DIR__ . '/../../config.php');
 require_once($CFG->libdir . '/formslib.php');
 
-class campaign_edit_form extends moodleform {
-    protected $isadding;
-    protected $title = '';
-    protected $description = '';
-
-    public function __construct($actionurl, $isadding) {
-        $this->isadding = $isadding;
-        parent::__construct($actionurl);
-    }
-
-    public function definition() {
-        $mform =& $this->_form;
-
-        // Then show the fields about where this block appears.
-        $mform->addElement('header', 'editcampaignheader', get_string('campaign', 'block_campaign_manager'));
-
-        $mform->addElement('text', 'title', get_string('campaignname', 'block_campaign_manager'), array('size' => 120));
-        $mform->setType('title', PARAM_TEXT);
-        $mform->addRule('title', null, 'required');
-
-        $mform->addElement('textarea', 'description', get_string('displaydescriptionlabel', 'block_campaign_manager'),
-                'wrap="virtual" rows="10" cols="50"');
-
-        $mform->addElement('text', 'url', get_string('campaignurl', 'block_campaign_manager'), array('size' => 60));
-        $mform->setType('url', PARAM_URL);
-
-        $mform->addElement('filemanager', 'image', get_string('campaignimage', 'block_campaign_manager'), null,
-                array('accepted_types' => array('.jpg', '.png', 'jpeg')));
-
-        $mform->addRule('image', null, 'required');
-
-        $mform->addElement('date_time_selector', 'startdate', get_string('startdate', 'block_campaign_manager'));
-        $mform->addHelpButton('startdate', 'startdate');
-        $mform->addRule('startdate', null, 'required');
-        $mform->setAdvanced('startdate');
-
-        $mform->addElement('date_time_selector', 'enddate', get_string('enddate', 'block_campaign_manager'));
-        $mform->addHelpButton('enddate', 'enddate');
-        $mform->addRule('enddate', null, 'required');
-        $mform->setAdvanced('enddate');
-
-        $this->add_action_buttons(true, get_string('continue'));
-    }
-
-    public function validation($data, $files) {
-        $errors = parent::validation($data, $files);
-
-        if ($data['enddate'] && $data['startdate'] && $data['startdate'] >= $data['enddate']) {
-            $errors['startdate'] = get_string('invalidstartdate', 'block_campaign_manager');
-        }
-
-        return $errors;
-    }
-
-    public function get_data() {
-        $data = parent::get_data();
-        return $data;
-    }
-}
-
-require_login();
-
 $returnurl = optional_param('returnurl', '', PARAM_LOCALURL);
 $campaignid = optional_param('campaignid', 0, PARAM_INT); // 0 mean create new.
 
+require_login();
+
 $context = context_system::instance();
 $PAGE->set_context($context);
+
+$managesharedfeeds = has_capability('block/campaign_manager:manageanycampaigns', $context);
+if (!$managesharedfeeds) {
+    require_capability('block/campaign_manager:manageanycampaigns', $context);
+}
 
 $urlparams = array('campaignid' => $campaignid);
 $managecampaigns = new moodle_url('/blocks/campaign_manager/managecampaigns.php', $urlparams);
@@ -107,7 +52,7 @@ if ($campaignid) {
     $campaignrecord = new stdClass;
 }
 
-$mform = new campaign_edit_form($PAGE->url, $isadding);
+$mform = new block_campaign_manager_campaign_form($PAGE->url, $isadding);
 $mform->set_data($campaignrecord);
 
 if ($mform->is_cancelled()) {

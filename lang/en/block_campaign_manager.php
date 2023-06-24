@@ -23,8 +23,9 @@
  */
 
 $string['addnew'] = 'Add a new';
+$string['settings'] = 'Settings';
 $string['addnewcampaign'] = 'Add a new campaign';
-$string['clientnumentries'] = 'Maximum number of campaigns to display in the module.';
+$string['clientnumentries'] = 'Maximum number of campaigns to display in the block.';
 $string['urlnotvalid'] = 'URL is not valid';
 $string['deletecampaignconfirm'] = 'Delete the campaign?';
 $string['displaydescriptionlabel'] = 'Description';
@@ -46,3 +47,4 @@ $string['pluginname'] = 'Campaign Manager';
 $string['invalidstartdate'] = 'Start date is not correct';
 $string['campaign_manager:addinstance'] = 'Add Campaign Manager module';
 $string['campaign_manager:myaddinstance'] = 'Add a new campaign';
+$string['campaign_manager:manageanycampaigns'] = 'Manage any campaign';

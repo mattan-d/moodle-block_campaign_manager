@@ -15,16 +15,26 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details
+ * Renderer Class is defined here.
  *
  * @package   block_campaign_manager
  * @copyright 2023 CentricApp <support@centricapp.co>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+namespace block_campaign_manager\output;
 
-$plugin->version = 2023240600;        // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires = 2018120310;        // Requires this Moodle version.
-$plugin->component = 'block_campaign_manager'; // Full name of the plugin (used for diagnostics).
-$plugin->release = '1.0';
+use plugin_renderer_base;
+
+class renderer extends plugin_renderer_base {
+
+    /**
+     * Return the main content for the block campaign_manager.
+     *
+     * @param campaign $campaign The campaign_manager renderable
+     * @return string HTML string
+     */
+    public function render_campaign_manager(campaign $campaign) {
+        return $this->render_from_template('block_campaign_manager/campaign', $campaign->export_for_template($this));
+    }
+}

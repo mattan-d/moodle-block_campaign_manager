@@ -24,16 +24,24 @@
 
 require_once(__DIR__ . '/../../config.php');
 require_once($CFG->libdir . '/tablelib.php');
-
-require_login();
+require_once($CFG->libdir . '/adminlib.php');
+require_once(__DIR__ . '/lib.php');
 
 $returnurl = optional_param('returnurl', '', PARAM_LOCALURL);
 $deletecampaignid = optional_param('deletecampaignid', 0, PARAM_INT);
 $statuscampaignid = optional_param('statuscampaignid', 0, PARAM_INT);
 $newstatus = optional_param('newstatus', 0, PARAM_INT);
 
+require_login();
+
 $context = context_system::instance();
+
 $PAGE->set_context($context);
+
+$managesharedfeeds = has_capability('block/campaign_manager:manageanycampaigns', $context);
+if (!$managesharedfeeds) {
+    require_capability('block/campaign_manager:manageanycampaigns', $context);
+}
 
 $urlparams = array();
 $extraparams = '';
@@ -64,14 +72,11 @@ $campaigns = $DB->get_records('block_campaign_manager', array(), 'startdate');
 
 $strmanage = get_string('managecampaigns', 'block_campaign_manager');
 
-$PAGE->set_pagelayout('standard');
+$PAGE->set_pagelayout('admin');
 $PAGE->set_title($strmanage);
 $PAGE->set_heading($strmanage);
 
 $managecampaigns = new moodle_url('/blocks/campaign_manager/managecampaigns.php', $urlparams);
-$PAGE->navbar->add(get_string('blocks'));
-$PAGE->navbar->add(get_string('pluginname', 'block_campaign_manager'));
-$PAGE->navbar->add(get_string('managecampaigns', 'block_campaign_manager'), $managecampaigns);
 echo $OUTPUT->header();
 
 $table = new flexible_table('display-campaigns');

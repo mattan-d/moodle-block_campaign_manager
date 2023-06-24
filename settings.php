@@ -24,12 +24,27 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+$ADMIN->add('blocksettings', new admin_category('blockcampaignmanagerfolder',
+        get_string('pluginname', 'block_campaign_manager')));
+
+// Create settings block.
+$settings = new admin_settingpage($section, get_string('settings', 'block_campaign_manager'));
+
 if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configtext('block_campaign_manager_num_entries',
             get_string('numentries', 'block_campaign_manager'),
             get_string('clientnumentries', 'block_campaign_manager'), 5, PARAM_INT));
-
-    $link = '<a href="' . $CFG->wwwroot . '/blocks/campaign_manager/managecampaigns.php">' .
-            get_string('campaignsaddedit', 'block_campaign_manager') . '</a>';
-    $settings->add(new admin_setting_heading('block_addheading', '', $link));
 }
+
+// This adds the settings link to the folder/submenu.
+$ADMIN->add('blockcampaignmanagerfolder', $settings);
+
+// This adds a link to an external page.
+$ADMIN->add('blockcampaignmanagerfolder',
+        new admin_externalpage('block_campaign_manager_form',
+                get_string('campaignsaddedit', 'block_campaign_manager'),
+                new moodle_url('/blocks/campaign_manager/managecampaigns.php'))
+);
+
+// Prevent Moodle from adding settings block in standard location.
+$settings = null;

@@ -55,9 +55,9 @@ function block_campaign_manager_pluginfile($course, $cm, $context, $filearea, $a
     $fs = get_file_storage();
     $filename = array_pop($args);
     $filepath = $args ? '/' . implode('/', $args) . '/' : '/';
+    $file = $fs->get_file($context->id, 'block_campaign_manager', 'content', $itemid, '/', $filename);
 
-    if (!$file = $fs->get_file($context->id, 'block_campaign_manager', 'content', $itemid, '/', $filename) ||
-            $file->is_directory()) {
+    if (!$file || $file->is_directory()) {
         send_file_not_found();
     }
 
