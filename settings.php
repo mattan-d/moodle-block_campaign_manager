@@ -39,11 +39,17 @@ if ($ADMIN->fulltree) {
 // This adds the settings link to the folder/submenu.
 $ADMIN->add('blockcampaignmanagerfolder', $settings);
 
-// This adds a link to an external page.
+// This adds a links to an external page.
 $ADMIN->add('blockcampaignmanagerfolder',
         new admin_externalpage('block_campaign_manager_form',
-                get_string('campaignsaddedit', 'block_campaign_manager'),
+                get_string('managecampaigns', 'block_campaign_manager'),
                 new moodle_url('/blocks/campaign_manager/managecampaigns.php'))
+);
+
+$ADMIN->add('blockcampaignmanagerfolder',
+        new admin_externalpage('block_campaign_manager_add',
+                get_string('addnewcampaign', 'block_campaign_manager'),
+                new moodle_url('/blocks/campaign_manager/editcampaign.php'))
 );
 
 // Prevent Moodle from adding settings block in standard location.

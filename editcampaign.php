@@ -41,7 +41,7 @@ if (!$managesharedfeeds) {
 $urlparams = array('campaignid' => $campaignid);
 $managecampaigns = new moodle_url('/blocks/campaign_manager/managecampaigns.php', $urlparams);
 
-$PAGE->set_url('/blocks/campaign_manager/editcampaign.php', $urlparams);
+$PAGE->set_url('/blocks/campaign_manager/editcampaign.php');
 $PAGE->set_pagelayout('admin');
 
 if ($campaignid) {
@@ -86,11 +86,6 @@ if ($mform->is_cancelled()) {
 
     $PAGE->set_title($strtitle);
     $PAGE->set_heading($strtitle);
-
-    $PAGE->navbar->add(get_string('blocks'));
-    $PAGE->navbar->add(get_string('pluginname', 'block_campaign_manager'));
-    $PAGE->navbar->add(get_string('managecampaigns', 'block_campaign_manager'), $managecampaigns);
-    $PAGE->navbar->add($strtitle);
 
     echo $OUTPUT->header();
     echo $OUTPUT->heading($strtitle, 2);

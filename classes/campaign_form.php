@@ -75,7 +75,7 @@ class block_campaign_manager_campaign_form extends moodleform {
         $mform->addHelpButton('enddate', 'enddate');
         $mform->setAdvanced('enddate');
 
-        $this->add_action_buttons(true, get_string('continue'));
+        $this->add_action_buttons(true, get_string('savechanges'));
     }
 
     public function validation($data, $files) {
