@@ -64,6 +64,8 @@ class block_campaign_manager_campaign_form extends moodleform {
 
         $mform->addElement('date_time_selector', 'startdate', get_string('startdate', 'block_campaign_manager'),
                 array('optional' => true));
+        $date = (new \DateTime())->setTimestamp(time());
+        $mform->setDefault('startdate', $date->getTimestamp());
         $mform->addHelpButton('startdate', 'startdate');
         $mform->setAdvanced('startdate');
 
