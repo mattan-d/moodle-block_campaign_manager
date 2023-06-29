@@ -48,3 +48,4 @@ $string['invalidstartdate'] = 'תאריך התחלת קמפיין אינו תק�
 $string['campaign_manager:addinstance'] = 'הוספת משבצת ניהול קמפיינים';
 $string['campaign_manager:myaddinstance'] = 'הוספת קמפיין חדש';
 $string['campaign_manager:manageanycampaigns'] = 'ניהול קמפיינים';
+$string['privacy:metadata'] = 'מנהל קמפיינים אינו מאחסן מידע אישי.';

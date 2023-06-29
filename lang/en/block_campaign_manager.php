@@ -48,3 +48,4 @@ $string['invalidstartdate'] = 'Start date is not correct';
 $string['campaign_manager:addinstance'] = 'Add Campaign Manager module';
 $string['campaign_manager:myaddinstance'] = 'Add a new campaign';
 $string['campaign_manager:manageanycampaigns'] = 'Manage any campaign';
+$string['privacy:metadata'] = 'Campaign manager does not store any personal data';
