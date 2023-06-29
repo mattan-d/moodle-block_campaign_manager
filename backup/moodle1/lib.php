@@ -23,9 +23,19 @@
  */
 
 /**
- * Block conversion handler for campaign_manager
+ * Backup
+ *
+ * @package     block_campaign_manager
+ * @category    backup
  */
 class moodle1_block_campaign_manager_handler extends moodle1_block_handler {
+
+    /**
+     *
+     * Processes the block data during backup.
+     * @param array $data The block data to process.
+     * @return array The processed block data.
+     */
     public function process_block(array $data) {
         parent::process_block($data);
         $instanceid = $data['id'];

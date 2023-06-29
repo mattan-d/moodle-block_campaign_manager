@@ -30,19 +30,41 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_campaign_manager extends block_base {
+
+    /**
+     *
+     * Initializes the object by setting the title.
+     *
+     * @return void
+     */
     public function init() {
         $this->title = get_string('pluginname', 'block_campaign_manager');
     }
 
+    /**
+     * Returns the applicable formats for the block.
+     *
+     * @return array An array indicating the applicable formats for the block.
+     */
     public function applicable_formats() {
         return array('all' => true);
     }
 
+    /**
+     * Customizes the block's title.
+     *
+     * @return void
+     */
     public function specialization() {
         // No customized block title.
         $this->title = get_string('campaigncampaign', 'block_campaign_manager');
     }
 
+    /**
+     * Retrieves the block content.
+     *
+     * @return stdClass The block content object.
+     */
     public function get_content() {
         global $CFG, $DB;
 
@@ -50,7 +72,7 @@ class block_campaign_manager extends block_base {
             return $this->content;
         }
 
-        // Initalise block content object.
+        // Initialize block content object.
         $this->content = new stdClass;
         $this->content->text = '';
         $this->content->footer = '';
@@ -67,14 +89,29 @@ class block_campaign_manager extends block_base {
         return $this->content;
     }
 
+    /**
+     * Determines if multiple instances of the block are allowed.
+     *
+     * @return bool True if multiple instances are allowed, false otherwise.
+     */
     public function instance_allow_multiple() {
         return true;
     }
 
+    /**
+     * Determines if the block has configuration settings.
+     *
+     * @return bool True if the block has configuration settings, false otherwise.
+     */
     public function has_config() {
         return true;
     }
 
+    /**
+     * Determines if the block instance allows configuration.
+     *
+     * @return bool True if the block instance allows configuration, false otherwise.
+     */
     public function instance_allow_config() {
         return true;
     }

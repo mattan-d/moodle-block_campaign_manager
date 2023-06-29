@@ -15,21 +15,27 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Backup
+ *
  * @package   block_campaign_manager
- * @subpackage backup-moodle2
  * @copyright 2023 CentricApp <support@centricapp.co>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
- * Define all the backup steps that wll be used by the backup_campaign_manager_block_task
- */
-
-/**
- * Define the complete forum structure for backup, with file and id annotations
+ * Specialised backup task for the campaign_manager block
+ *
+ * @package     block_campaign_manager
+ * @category    backup
  */
 class backup_campaign_manager_block_structure_step extends backup_block_structure_step {
 
+    /**
+     *
+     * Defines the structure of the block for backup purposes.
+     *
+     * @return backup_nested_element The root element of the block structure.
+     */
     protected function define_structure() {
         global $DB;
 

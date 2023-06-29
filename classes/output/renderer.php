@@ -26,6 +26,12 @@ namespace block_campaign_manager\output;
 
 use plugin_renderer_base;
 
+/**
+ * Renderer
+ *
+ * @package     block_campaign_manager
+ * @category    admin
+ */
 class renderer extends plugin_renderer_base {
 
     /**

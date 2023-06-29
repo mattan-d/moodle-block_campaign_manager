@@ -15,8 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Restore
+ *
  * @package   block_campaign_manager
- * @subpackage backup-moodle2
  * @copyright 2023 CentricApp <support@centricapp.co>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,33 +28,63 @@ require_once($CFG->dirroot .
         '/blocks/campaign_manager/backup/moodle2/restore_campaign_manager_stepslib.php'); // We have structure steps.
 
 /**
- * Specialised restore task for the campaign_manager block
- * (has own DB structures to backup)
+ * Restore
  *
- * TODO: Finish phpdocs
+ * @package     block_campaign_manager
+ * @category    backup
  */
 class restore_campaign_manager_block_task extends restore_block_task {
 
+    /**
+     * Defines the block's custom settings.
+     *
+     * @return void
+     */
     protected function define_my_settings() {
     }
 
+    /**
+     * Defines the block's custom steps.
+     *
+     * @return void
+     */
     protected function define_my_steps() {
         // Campaign_manager has one structure step.
         $this->add_step(new restore_campaign_manager_block_structure_step('campaign_manager_structure', 'campaign_manager.xml'));
     }
 
+    /**
+     * Returns the file areas associated with the block.
+     *
+     * @return array An array of file areas associated with the block.
+     */
     public function get_fileareas() {
-        return array(); // No associated fileareas.
+        return array(); // No associated file areas.
     }
 
+    /**
+     * Returns the encoded attributes of the block's config data.
+     *
+     * @return array An array of encoded attributes of the config data.
+     */
     public function get_configdata_encoded_attributes() {
-        return array(); // No special handling of configdata.
+        return array(); // No special handling of config data.
     }
 
+    /**
+     * Defines the decoding contents for the block.
+     *
+     * @return array An array defining the decoding contents.
+     */
     public static function define_decode_contents() {
         return array();
     }
 
+    /**
+     * Defines the decoding rules for the block.
+     *
+     * @return array An array defining the decoding rules.
+     */
     public static function define_decode_rules() {
         return array();
     }

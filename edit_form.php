@@ -30,6 +30,14 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_campaign_manager_edit_form extends block_edit_form {
+
+    /**
+     *
+     * Defines the specific form elements for configuring the block.
+     *
+     * @param MoodleQuickForm $mform The form object.
+     * @return void
+     */
     protected function specific_definition($mform) {
         global $CFG, $DB, $USER;
 
@@ -48,6 +56,12 @@ class block_campaign_manager_edit_form extends block_edit_form {
         }
     }
 
+    /**
+     *
+     * Sets the default values for the form elements based on the block configuration.
+     * @param object $defaults The default values object.
+     * @return void
+     */
     public function set_data($defaults) {
         $defaults->config_shownumentries = $this->block->config->config_shownumentries;
         parent::set_data($defaults);

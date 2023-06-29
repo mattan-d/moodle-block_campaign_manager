@@ -32,15 +32,44 @@ require_once($CFG->libdir . '/formslib.php');
  * @category    admin
  */
 class block_campaign_manager_campaign_form extends moodleform {
+
+    /**
+     *
+     * Flag indicating if the action is an adding operation.
+     * @var bool
+     */
     protected $isadding;
+    /**
+     *
+     * The title of the item.
+     * @var string
+     */
     protected $title = '';
+    /**
+     *
+     * The description of the item.
+     * @var string
+     */
     protected $description = '';
 
+    /**
+     * Constructor for the class.
+     *
+     * @param string $actionurl The URL where the action will be performed.
+     * @param bool $isadding Indicates if the action is an adding operation.
+     * @return void
+     */
     public function __construct($actionurl, $isadding) {
         $this->isadding = $isadding;
         parent::__construct($actionurl);
     }
 
+    /**
+     *
+     * Defines the form elements for creating/editing a campaign.
+     *
+     * @return void
+     */
     public function definition() {
         $mform =& $this->_form;
 
@@ -80,6 +109,14 @@ class block_campaign_manager_campaign_form extends moodleform {
         $this->add_action_buttons(true, get_string('savechanges'));
     }
 
+    /**
+     *
+     * Validates the submitted form data and files for creating/editing a campaign.
+     *
+     * @param array $data The submitted form data.
+     * @param array $files The submitted files.
+     * @return array An array containing any validation errors encountered.
+     */
     public function validation($data, $files) {
         $errors = parent::validation($data, $files);
 
@@ -90,6 +127,12 @@ class block_campaign_manager_campaign_form extends moodleform {
         return $errors;
     }
 
+    /**
+     *
+     * Retrieves the submitted form data.
+     *
+     * @return array|null The submitted form data, or null if no data was submitted.
+     */
     public function get_data() {
         $data = parent::get_data();
         return $data;

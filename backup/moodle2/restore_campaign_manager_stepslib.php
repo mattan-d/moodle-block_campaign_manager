@@ -15,8 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Restore
+ *
  * @package   block_campaign_manager
- * @subpackage backup-moodle2
  * @copyright 2023 CentricApp <support@centricapp.co>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,6 +31,11 @@
  */
 class restore_campaign_manager_block_structure_step extends restore_structure_step {
 
+    /**
+     * Defines the structure of the block for restore purposes.
+     *
+     * @return array An array of restore path elements defining the structure.
+     */
     protected function define_structure() {
 
         $paths = array();
@@ -41,6 +47,12 @@ class restore_campaign_manager_block_structure_step extends restore_structure_st
         return $paths;
     }
 
+    /**
+     * Processes the block data during restore.
+     *
+     * @param object $data The block data to process.
+     * @return void
+     */
     public function process_block($data) {
         global $DB;
 

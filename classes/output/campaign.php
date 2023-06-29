@@ -28,6 +28,12 @@ use renderable;
 use renderer_base;
 use templatable;
 
+/**
+ * Campaign.
+ *
+ * @package     block_campaign_manager
+ * @category    admin
+ */
 class campaign implements renderable, templatable {
 
     /**
