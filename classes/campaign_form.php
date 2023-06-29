@@ -36,18 +36,21 @@ class block_campaign_manager_campaign_form extends moodleform {
     /**
      *
      * Flag indicating if the action is an adding operation.
+     *
      * @var bool
      */
     protected $isadding;
     /**
      *
      * The title of the item.
+     *
      * @var string
      */
     protected $title = '';
     /**
      *
      * The description of the item.
+     *
      * @var string
      */
     protected $description = '';
@@ -56,11 +59,11 @@ class block_campaign_manager_campaign_form extends moodleform {
      * Constructor for the class.
      *
      * @param string $actionurl The URL where the action will be performed.
-     * @param bool $isadding Indicates if the action is an adding operation.
+     * @param bool $campaignid Indicates if the action is an adding operation.
      * @return void
      */
-    public function __construct($actionurl, $isadding) {
-        $this->isadding = $isadding;
+    public function __construct($actionurl, $campaignid) {
+        $this->campaignid = $campaignid;
         parent::__construct($actionurl);
     }
 
@@ -75,6 +78,9 @@ class block_campaign_manager_campaign_form extends moodleform {
 
         // Then show the fields about where this block appears.
         $mform->addElement('header', 'editcampaignheader', get_string('campaign', 'block_campaign_manager'));
+
+        $mform->addElement('hidden', 'campaignid');
+        $mform->setDefault('campaignid', $this->campaignid);
 
         $mform->addElement('text', 'title', get_string('campaignname', 'block_campaign_manager'), array('size' => 120));
         $mform->setType('title', PARAM_TEXT);

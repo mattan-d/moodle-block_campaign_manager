@@ -52,7 +52,7 @@ if ($campaignid) {
     $campaignrecord = new stdClass;
 }
 
-$mform = new block_campaign_manager_campaign_form($PAGE->url, $isadding);
+$mform = new block_campaign_manager_campaign_form($PAGE->url, $campaignid);
 $mform->set_data($campaignrecord);
 
 if ($mform->is_cancelled()) {
