@@ -28,3 +28,4 @@ $plugin->version = 2023062400;        // The current plugin version (Date: YYYYM
 $plugin->requires = 2018120310;        // Requires this Moodle version.
 $plugin->component = 'block_campaign_manager'; // Full name of the plugin (used for diagnostics).
 $plugin->release = '1.0';
+$plugin->maturity = MATURITY_STABLE;
