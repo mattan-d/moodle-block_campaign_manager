@@ -24,33 +24,33 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
-        'block/campaign_manager:myaddinstance' => array(
+$capabilities = [
+        'block/campaign_manager:myaddinstance' => [
                 'captype' => 'write',
                 'contextlevel' => CONTEXT_SYSTEM,
-                'archetypes' => array(
-                        'user' => CAP_ALLOW
-                ),
+                'archetypes' => [
+                        'user' => CAP_ALLOW,
+                ],
                 'clonepermissionsfrom' => 'moodle/my:manageblocks'
-        ),
-        'block/campaign_manager:addinstance' => array(
+        ],
+        'block/campaign_manager:addinstance' => [
                 'riskbitmask' => RISK_SPAM | RISK_XSS,
                 'captype' => 'write',
                 'contextlevel' => CONTEXT_BLOCK,
-                'archetypes' => array(
+                'archetypes' => [
                         'editingteacher' => CAP_ALLOW,
-                        'manager' => CAP_ALLOW
-                ),
+                        'manager' => CAP_ALLOW,
+                ],
                 'clonepermissionsfrom' => 'moodle/site:manageblocks'
-        ),
-        'block/campaign_manager:manageanycampaigns' => array(
+        ],
+        'block/campaign_manager:manageanycampaigns' => [
                 'riskbitmask' => RISK_SPAM,
                 'captype' => 'write',
                 'contextlevel' => CONTEXT_BLOCK,
-                'archetypes' => array(
-                        'manager' => CAP_ALLOW
-                )
-        )
-);
+                'archetypes' => [
+                        'manager' => CAP_ALLOW,
+                ]
+        ],
+];
 
 
