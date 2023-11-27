@@ -31,7 +31,7 @@ $capabilities = [
                 'archetypes' => [
                         'user' => CAP_ALLOW,
                 ],
-                'clonepermissionsfrom' => 'moodle/my:manageblocks'
+                'clonepermissionsfrom' => 'moodle/my:manageblocks',
         ],
         'block/campaign_manager:addinstance' => [
                 'riskbitmask' => RISK_SPAM | RISK_XSS,
@@ -41,7 +41,7 @@ $capabilities = [
                         'editingteacher' => CAP_ALLOW,
                         'manager' => CAP_ALLOW,
                 ],
-                'clonepermissionsfrom' => 'moodle/site:manageblocks'
+                'clonepermissionsfrom' => 'moodle/site:manageblocks',
         ],
         'block/campaign_manager:manageanycampaigns' => [
                 'riskbitmask' => RISK_SPAM,
