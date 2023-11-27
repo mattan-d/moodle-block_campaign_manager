@@ -41,6 +41,8 @@ class block_campaign_manager_edit_form extends block_edit_form {
     protected function specific_definition($mform) {
         global $CFG, $DB, $USER;
 
+        $config = get_config('block_campaign_manager');
+
         // Fields for editing block contents.
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
 
@@ -49,8 +51,8 @@ class block_campaign_manager_edit_form extends block_edit_form {
         $mform->setType('config_shownumentries', PARAM_INT);
         $mform->addRule('config_shownumentries', null, 'numeric', null, 'client');
 
-        if (!empty($CFG->block_campaign_manager_num_entries)) {
-            $mform->setDefault('config_shownumentries', $CFG->block_campaign_manager_num_entries);
+        if (!empty($config->num_entries)) {
+            $mform->setDefault('config_shownumentries', $config->num_entries);
         } else {
             $mform->setDefault('config_shownumentries', 5);
         }

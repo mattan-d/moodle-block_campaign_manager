@@ -70,12 +70,12 @@ class campaign implements renderable, templatable {
         $max = 0;
 
         if (!empty($this->config->shownumentries)) {
-            $CFG->block_campaign_manager_num_entries = $this->config->shownumentries;
+            $this->config->num_entries = $this->config->shownumentries;
         }
 
         foreach ($campaigns as $campaign) {
 
-            if ($max == $CFG->block_campaign_manager_num_entries) {
+            if ($max == $this->config->num_entries) {
                 continue;
             }
 

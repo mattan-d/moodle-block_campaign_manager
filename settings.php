@@ -31,7 +31,7 @@ $ADMIN->add('blocksettings', new admin_category('blockcampaignmanagerfolder',
 $settings = new admin_settingpage($section, get_string('settings', 'block_campaign_manager'));
 
 if ($ADMIN->fulltree) {
-    $settings->add(new admin_setting_configtext('block_campaign_manager_num_entries',
+    $settings->add(new admin_setting_configtext('block_campaign_manager\num_entries',
             get_string('numentries', 'block_campaign_manager'),
             get_string('clientnumentries', 'block_campaign_manager'), 5, PARAM_INT));
 }

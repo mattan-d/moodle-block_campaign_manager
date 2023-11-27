@@ -59,7 +59,6 @@ if ($mform->is_cancelled()) {
     redirect($managecampaigns);
 
 } else if ($data = $mform->get_data()) {
-    $data->userid = $USER->id;
 
     if ($isadding) {
         $data->id = $DB->insert_record('block_campaign_manager', $data);

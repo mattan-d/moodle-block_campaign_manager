@@ -43,46 +43,19 @@ class provider_test extends \core_privacy\tests\provider_testcase {
     }
 
     /**
-     * Test for provider::get_contexts_for_userid().
-     * @covers ::add_campaign
-     */
-    public function test_get_contexts_for_userid() {
-        global $DB;
-
-        $user = $this->getDataGenerator()->create_user();
-        $this->add_campaign($user);
-
-        // Check that we have an entry.
-        $campaigns = $DB->get_records('block_campaign_manager', ['userid' => $user->id]);
-        $this->assertCount(1, $campaigns);
-
-        // Add additional assertions to verify the expected behavior.
-        // Assert that the campaign entry matches the user ID.
-        foreach ($campaigns as $campaign) {
-            $this->assertEquals($user->id, $campaign->userid);
-        }
-
-        // Add assertions to verify the expected behavior.
-        $this->assertTrue(true);
-    }
-
-    /**
      * Add dummy Campaign Manager.
-     *
-     * @param object $user User object
      */
-    private function add_campaign($user) {
+    private function add_campaign() {
         global $DB;
 
         $data = array(
-                'userid' => $user->id,
                 'title' => 'Some Campagin',
                 'description' => 'Description here',
                 'image' => 1,
                 'startdate' => time(),
                 'enddate' => time(),
                 'visible' => 1,
-                'url' => 'https://moodle.com',
+                'url' => 'https://centricapp.co.il',
         );
 
         $DB->insert_record('block_campaign_manager', $data);
