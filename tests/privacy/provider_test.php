@@ -66,9 +66,14 @@ class provider_test extends \core_privacy\tests\provider_testcase {
     }
 
     /**
-     * Add dummy Campaign Manager.
+     * Add a new campaign to the campaign manager.
      *
-     * @param object $user User object
+     * This method inserts a new campaign record into the 'block_campaign_manager' table.
+     * The campaign data includes a title, description, image identifier, start date, end date, visibility status,
+     * and a URL.
+     *
+     * @global \moodle_database $DB The global Moodle database object.
+     * @return void
      */
     private function add_campaign() {
         global $DB;
