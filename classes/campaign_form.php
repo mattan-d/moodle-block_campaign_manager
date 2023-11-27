@@ -82,18 +82,18 @@ class block_campaign_manager_campaign_form extends moodleform {
         $mform->addElement('hidden', 'campaignid');
         $mform->setDefault('campaignid', $this->campaignid);
 
-        $mform->addElement('text', 'title', get_string('campaignname', 'block_campaign_manager'), array('size' => 120));
+        $mform->addElement('text', 'title', get_string('campaignname', 'block_campaign_manager'), ['size' => 120]);
         $mform->setType('title', PARAM_TEXT);
         $mform->addRule('title', null, 'required');
 
         $mform->addElement('textarea', 'description', get_string('displaydescriptionlabel', 'block_campaign_manager'),
                 'wrap="virtual" rows="10" cols="50"');
 
-        $mform->addElement('text', 'url', get_string('campaignurl', 'block_campaign_manager'), array('size' => 60));
+        $mform->addElement('text', 'url', get_string('campaignurl', 'block_campaign_manager'), ['size' => 60]);
         $mform->setType('url', PARAM_URL);
 
         $mform->addElement('filemanager', 'image', get_string('campaignimage', 'block_campaign_manager'), null,
-                array('accepted_types' => array('.jpg', '.png', 'jpeg')));
+                ['accepted_types' => ['.jpg', '.png', 'jpeg']]);
 
         $mform->addRule('image', null, 'required');
 

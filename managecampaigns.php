@@ -55,7 +55,7 @@ $PAGE->set_url($baseurl);
 
 // Process any actions.
 if ($deletecampaignid && confirm_sesskey()) {
-    $DB->delete_records('block_campaign_manager', array('id' => $deletecampaignid));
+    $DB->delete_records('block_campaign_manager', ['id' => $deletecampaignid]);
 
     redirect($PAGE->url, get_string('campaigndeleted', 'block_campaign_manager'));
 }
@@ -81,9 +81,9 @@ echo $OUTPUT->header();
 
 $table = new flexible_table('display-campaigns');
 
-$table->define_columns(array('campaign', 'startdate', 'actions'));
-$table->define_headers(array(get_string('campaign', 'block_campaign_manager'), get_string('startdate', 'block_campaign_manager'),
-        get_string('enddate', 'block_campaign_manager'), get_string('actions', 'moodle')));
+$table->define_columns(['campaign', 'startdate', 'actions']));
+$table->define_headers([get_string('campaign', 'block_campaign_manager'), get_string('startdate', 'block_campaign_manager'),
+        get_string('enddate', 'block_campaign_manager'), get_string('actions', 'moodle')]);
 $table->define_baseurl($baseurl);
 
 $table->set_attribute('cellspacing', '0');
@@ -127,7 +127,7 @@ foreach ($campaigns as $campaign) {
     $campaign->startdate = date('d/m/Y H:i:s', $campaign->startdate);
     $campaign->enddate = date('d/m/Y H:i:s', $campaign->enddate);
 
-    $table->add_data(array($campaigninfo, $campaign->startdate, $campaign->enddate, $campaignicons));
+    $table->add_data([$campaigninfo, $campaign->startdate, $campaign->enddate, $campaignicons]);
 }
 
 $table->print_html();

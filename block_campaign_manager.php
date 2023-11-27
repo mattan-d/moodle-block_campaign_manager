@@ -47,7 +47,7 @@ class block_campaign_manager extends block_base {
      * @return array An array indicating the applicable formats for the block.
      */
     public function applicable_formats() {
-        return array('all' => true);
+        return ['all' => true];
     }
 
     /**

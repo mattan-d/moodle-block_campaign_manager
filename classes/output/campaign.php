@@ -66,7 +66,7 @@ class campaign implements renderable, templatable {
         $fs = get_file_storage();
 
         // Get the list of campaigns.
-        $campaigns = $DB->get_records('block_campaign_manager', array('visible' => 1));
+        $campaigns = $DB->get_records('block_campaign_manager', ['visible' => 1]);
         $max = 0;
 
         if (!empty($this->config->shownumentries)) {

@@ -77,15 +77,13 @@ class provider_test extends \core_privacy\tests\provider_testcase {
     private function add_campaign() {
         global $DB;
 
-        $data = array(
-                'title' => 'Some Campagin',
+        $data = ['title' => 'Some Campagin',
                 'description' => 'Description here',
                 'image' => 1,
                 'startdate' => time(),
                 'enddate' => time(),
                 'visible' => 1,
-                'url' => 'https://centricapp.co.il',
-        );
+                'url' => 'https://centricapp.co.il',];
 
         $DB->insert_record('block_campaign_manager', $data);
     }

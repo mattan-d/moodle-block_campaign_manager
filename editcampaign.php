@@ -38,7 +38,7 @@ if (!$managesharedfeeds) {
     require_capability('block/campaign_manager:manageanycampaigns', $context);
 }
 
-$urlparams = array('campaignid' => $campaignid);
+$urlparams = ['campaignid' => $campaignid];
 $managecampaigns = new moodle_url('/blocks/campaign_manager/managecampaigns.php', $urlparams);
 
 $PAGE->set_url('/blocks/campaign_manager/editcampaign.php');
@@ -46,7 +46,7 @@ $PAGE->set_pagelayout('admin');
 
 if ($campaignid) {
     $isadding = false;
-    $campaignrecord = $DB->get_record('block_campaign_manager', array('id' => $campaignid), '*', MUST_EXIST);
+    $campaignrecord = $DB->get_record('block_campaign_manager', ['id' => $campaignid], '*', MUST_EXIST);
 } else {
     $isadding = true;
     $campaignrecord = new stdClass;
@@ -68,8 +68,7 @@ if ($mform->is_cancelled()) {
 
     // Initialise file picker for image.
     $draftitemid = file_get_submitted_draft_itemid('image');
-    file_save_draft_area_files($draftitemid, $context->id, 'block_campaign_manager', 'content', $data->id,
-            array('subdirs' => true));
+    file_save_draft_area_files($draftitemid, $context->id, 'block_campaign_manager', 'content', $data->id, ['subdirs' => true]);
     $data->image = $draftitemid;
 
     $DB->update_record('block_campaign_manager', $data);

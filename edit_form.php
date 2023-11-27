@@ -47,7 +47,7 @@ class block_campaign_manager_edit_form extends block_edit_form {
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
 
         $mform->addElement('text', 'config_shownumentries', get_string('shownumentrieslabel', 'block_campaign_manager'),
-                array('size' => 5));
+                ['size' => 5]);
         $mform->setType('config_shownumentries', PARAM_INT);
         $mform->addRule('config_shownumentries', null, 'numeric', null, 'client');
 
@@ -61,6 +61,7 @@ class block_campaign_manager_edit_form extends block_edit_form {
     /**
      *
      * Sets the default values for the form elements based on the block configuration.
+     *
      * @param object $defaults The default values object.
      * @return void
      */
