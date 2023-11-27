@@ -98,14 +98,13 @@ class block_campaign_manager_campaign_form extends moodleform {
         $mform->addRule('image', null, 'required');
 
         $mform->addElement('date_time_selector', 'startdate', get_string('startdate', 'block_campaign_manager'),
-                array('optional' => true));
+                ['optional' => true]);
         $date = (new \DateTime())->setTimestamp(time());
         $mform->setDefault('startdate', $date->getTimestamp());
         $mform->addHelpButton('startdate', 'startdate');
         $mform->setAdvanced('startdate');
 
-        $mform->addElement('date_time_selector', 'enddate', get_string('enddate', 'block_campaign_manager'),
-                array('optional' => true));
+        $mform->addElement('date_time_selector', 'enddate', get_string('enddate', 'block_campaign_manager'), ['optional' => true]);
         $date = (new \DateTime())->setTimestamp(usergetmidnight(time()));
         $date->modify('+30 day');
         $mform->setDefault('enddate', $date->getTimestamp());
