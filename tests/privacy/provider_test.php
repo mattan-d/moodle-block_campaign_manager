@@ -72,7 +72,6 @@ class provider_test extends \core_privacy\tests\provider_testcase {
      * The campaign data includes a title, description, image identifier, start date, end date, visibility status,
      * and a URL.
      *
-     * @global \moodle_database $DB The global Moodle database object.
      * @return void
      */
     private function add_campaign() {
