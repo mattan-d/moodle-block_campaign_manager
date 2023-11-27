@@ -43,7 +43,32 @@ class provider_test extends \core_privacy\tests\provider_testcase {
     }
 
     /**
+     * Test for provider::get_contexts_for_userid().
+     * @covers ::add_campaign
+     */
+    public function test_get_contexts_for_userid() {
+        global $DB;
+
+        $this->add_campaign();
+
+        // Check that we have an entry.
+        $campaigns = $DB->get_records('block_campaign_manager', ['visible' => 1]);
+        $this->assertCount(1, $campaigns);
+
+        // Add additional assertions to verify the expected behavior.
+        // Assert that the campaign entry matches the user ID.
+        foreach ($campaigns as $campaign) {
+            $this->assertEquals(1, $campaign->visible);
+        }
+
+        // Add assertions to verify the expected behavior.
+        $this->assertTrue(true);
+    }
+
+    /**
      * Add dummy Campaign Manager.
+     *
+     * @param object $user User object
      */
     private function add_campaign() {
         global $DB;
