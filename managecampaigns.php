@@ -82,8 +82,10 @@ echo $OUTPUT->header();
 $table = new flexible_table('display-campaigns');
 
 $table->define_columns(['campaign', 'startdate', 'actions']);
-$table->define_headers([get_string('campaign', 'block_campaign_manager'), get_string('startdate', 'block_campaign_manager'),
-        get_string('enddate', 'block_campaign_manager'), get_string('actions', 'moodle')]);
+$table->define_headers([
+        get_string('campaign', 'block_campaign_manager'), get_string('startdate', 'block_campaign_manager'),
+        get_string('enddate', 'block_campaign_manager'), get_string('actions', 'moodle'),
+]);
 $table->define_baseurl($baseurl);
 
 $table->set_attribute('cellspacing', '0');
