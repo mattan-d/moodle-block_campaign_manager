@@ -43,7 +43,7 @@ if (!$managesharedfeeds) {
     require_capability('block/campaign_manager:manageanycampaigns', $context);
 }
 
-$urlparams = array();
+$urlparams = [];
 $extraparams = '';
 
 if ($returnurl) {
@@ -68,7 +68,7 @@ if ($statuscampaignid && confirm_sesskey()) {
 }
 
 // Display the list of campaigns.
-$campaigns = $DB->get_records('block_campaign_manager', array(), 'startdate');
+$campaigns = $DB->get_records('block_campaign_manager', [], 'startdate');
 
 $strmanage = get_string('managecampaigns', 'block_campaign_manager');
 

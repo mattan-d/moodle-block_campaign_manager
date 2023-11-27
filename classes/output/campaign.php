@@ -60,7 +60,7 @@ class campaign implements renderable, templatable {
         global $USER, $OUTPUT, $PAGE, $CFG, $DB;
 
         $data = new \stdClass();
-        $data->items = array();
+        $data->items = [];
 
         $context = \context_system::instance();
         $fs = get_file_storage();

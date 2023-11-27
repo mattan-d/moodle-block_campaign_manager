@@ -58,7 +58,7 @@ class backup_campaign_manager_block_task extends backup_block_task {
      * @return array An array of file areas associated with the block.
      */
     public function get_fileareas() {
-        return array();
+        return [];
     }
 
     /**
@@ -67,7 +67,7 @@ class backup_campaign_manager_block_task extends backup_block_task {
      * @return array An array of encoded attributes of the config data.
      */
     public function get_configdata_encoded_attributes() {
-        return array();
+        return [];
     }
 
     /**

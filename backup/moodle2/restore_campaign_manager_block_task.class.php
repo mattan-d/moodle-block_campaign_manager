@@ -59,7 +59,7 @@ class restore_campaign_manager_block_task extends restore_block_task {
      * @return array An array of file areas associated with the block.
      */
     public function get_fileareas() {
-        return array(); // No associated file areas.
+        return []; // No associated file areas.
     }
 
     /**
@@ -68,7 +68,7 @@ class restore_campaign_manager_block_task extends restore_block_task {
      * @return array An array of encoded attributes of the config data.
      */
     public function get_configdata_encoded_attributes() {
-        return array(); // No special handling of config data.
+        return []; // No special handling of config data.
     }
 
     /**
@@ -77,7 +77,7 @@ class restore_campaign_manager_block_task extends restore_block_task {
      * @return array An array defining the decoding contents.
      */
     public static function define_decode_contents() {
-        return array();
+        return [];
     }
 
     /**
@@ -86,7 +86,7 @@ class restore_campaign_manager_block_task extends restore_block_task {
      * @return array An array defining the decoding rules.
      */
     public static function define_decode_rules() {
-        return array();
+        return [];
     }
 }
 

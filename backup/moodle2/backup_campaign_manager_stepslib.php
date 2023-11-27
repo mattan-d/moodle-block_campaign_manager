@@ -63,7 +63,7 @@ class backup_campaign_manager_block_structure_step extends backup_block_structur
         $campaigns->add_child($campaign);
 
         // Define sources.
-        $campaignmanager->set_source_array([(object) array('id' => $this->task->get_blockid())]);
+        $campaignmanager->set_source_array([(object) ['id' => $this->task->get_blockid()]]);
 
         // Only if there are campaigns.
         if (!empty($config->campaignid)) {

@@ -38,7 +38,7 @@
  * @param array $options additional options affecting the file serving
  * @return bool
  */
-function block_campaign_manager_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+function block_campaign_manager_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
     global $DB, $CFG, $USER;
 
     if ($context->contextlevel != CONTEXT_SYSTEM) {
