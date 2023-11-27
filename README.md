@@ -1,5 +1,7 @@
 # Block Campaign Manager Plugin
 
+[![Maintained by Mattan Dor (CentricApp)](https://img.shields.io/badge/Maintained%20by-Mattan%20Dor%20(CentricApp)-brightgreen)](https://github.com/centricapp)
+
 ## Description
 The Block Campaign Manager Plugin is a Moodle plugin designed to manage advertisements within your Moodle site. This plugin allows you to easily embed images and links, specifying campaign start and end dates.
 
