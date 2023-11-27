@@ -49,6 +49,6 @@ $capabilities = [
                 'contextlevel' => CONTEXT_BLOCK,
                 'archetypes' => [
                         'manager' => CAP_ALLOW,
-                ]
+                ],
         ],
 ];

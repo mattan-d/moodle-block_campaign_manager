@@ -39,7 +39,7 @@ class backup_campaign_manager_block_structure_step extends backup_block_structur
     protected function define_structure() {
         global $DB;
 
-        $block = $DB->get_record('block_instances', array('id' => $this->task->get_blockid()));
+        $block = $DB->get_record('block_instances', ['id' => $this->task->get_blockid()]);
         $config = unserialize_object(base64_decode($block->configdata));
 
         if (!empty($config->campaignid)) {
@@ -53,18 +53,17 @@ class backup_campaign_manager_block_structure_step extends backup_block_structur
         }
 
         // Define each element separated.
-        $campaignmanager = new backup_nested_element('campaign_manager', array('id'), null);
+        $campaignmanager = new backup_nested_element('campaign_manager', ['id'], null);
         $campaigns = new backup_nested_element('campaigns');
-        $campaign = new backup_nested_element('campaign', array('id'), array(
-                'title', 'image', 'description', 'url', 'visible',
-                'startdate', 'enddate'));
+        $campaign = new backup_nested_element('campaign', ['id'],
+                ['title', 'image', 'description', 'url', 'visible', 'startdate', 'enddate']);
 
         // Build the tree.
         $campaignmanager->add_child($campaigns);
         $campaigns->add_child($campaign);
 
         // Define sources.
-        $campaignmanager->set_source_array(array((object) array('id' => $this->task->get_blockid())));
+        $campaignmanager->set_source_array([(object) array('id' => $this->task->get_blockid())]);
 
         // Only if there are campaigns.
         if (!empty($config->campaignid)) {

@@ -38,7 +38,7 @@ class restore_campaign_manager_block_structure_step extends restore_structure_st
      */
     protected function define_structure() {
 
-        $paths = array();
+        $paths = [];
 
         $paths[] = new restore_path_element('block', '/block', true);
         $paths[] = new restore_path_element('campaign_manager', '/block/campaign_manager');
@@ -57,7 +57,7 @@ class restore_campaign_manager_block_structure_step extends restore_structure_st
         global $DB;
 
         $data = (object) $data;
-        $campaignsarr = array(); // To accumulate campaigns.
+        $campaignsarr = []; // To accumulate campaigns.
 
         if (!$this->task->get_blockid()) {
             return;
