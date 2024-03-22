@@ -80,6 +80,7 @@ class block_campaign_manager_campaign_form extends moodleform {
         $mform->addElement('header', 'editcampaignheader', get_string('campaign', 'block_campaign_manager'));
 
         $mform->addElement('hidden', 'campaignid');
+        $mform->setType('campaignid', PARAM_INT);
         $mform->setDefault('campaignid', $this->campaignid);
 
         $mform->addElement('text', 'title', get_string('campaignname', 'block_campaign_manager'), ['size' => 120]);
